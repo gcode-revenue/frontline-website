@@ -8,4 +8,4 @@ Static website for Frontline Professional Solutions (plain HTML/CSS, no build st
 - `css/styles.css` – Shared styles
 - `CNAME` – Custom domain for GitHub Pages
 
-Before launch, replace the bracketed placeholders (`[UEI Number]`, `[CAGE Code]`, `[Phone Number]`, NAICS codes, address), the `info@yourdomain.com` email, and the domain in `CNAME`.
+Before launch, replace the bracketed placeholders (`[UEI Number]`, `[CAGE Code]`, `[Phone Number]`, NAICS codes, address). The site is served at www.frontlineps-usa.com (see `CNAME`).
