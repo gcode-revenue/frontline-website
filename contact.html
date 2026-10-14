@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Frontline Professional Solutions</title>
+  <meta name="description" content="Contact Frontline Professional Solutions to discuss a requirement, request a capability statement, or explore teaming.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="topbar">
+    <div class="container">
+      <span>Serving Federal, State, Local &amp; Commercial Clients</span>
+      <span class="hide-sm"><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="Frontline Professional Solutions home">
+        <span class="brand-mark" aria-hidden="true">FPS</span>
+        <span class="brand-text">
+          <span class="brand-name">Frontline Professional Solutions</span>
+          <span class="brand-tag">Government &amp; Commercial Contractor</span>
+        </span>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu">
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow" style="color:var(--gold)">Contact</span>
+        <h1>Get in touch with our team</h1>
+        <p>Send us your requirement, request a capability statement, or ask about teaming opportunities. We aim to respond within one business day.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <h2>Send a message</h2>
+          <form action="mailto:info@yourdomain.com" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="organization">Organization / Agency</label>
+                <input type="text" id="organization" name="organization" autocomplete="organization">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel">
+              </div>
+            </div>
+            <div class="field">
+              <label for="service">Service of Interest</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option>Logistics</option>
+                <option>Staffing</option>
+                <option>Product Sourcing</option>
+                <option>Consulting</option>
+                <option>Teaming / Subcontracting</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+            <p class="form-note" style="margin-top:14px;">Fields marked <span class="req">*</span> are required. Submitting opens your email application. Please do not send classified or sensitive information through this form.</p>
+          </form>
+        </div>
+
+        <aside class="info-panel" aria-labelledby="contact-info-heading">
+          <h3 id="contact-info-heading">Contact Information</h3>
+          <ul class="contact-list">
+            <li><strong>Email</strong><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></li>
+            <li><strong>Phone</strong>[Phone Number]</li>
+            <li><strong>Address</strong>[Street Address]<br>[City, State ZIP]</li>
+            <li><strong>Business Hours</strong>Monday &ndash; Friday, 8:00 a.m. &ndash; 5:00 p.m.</li>
+            <li><strong>UEI / CAGE</strong>[UEI Number] / [CAGE Code]</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Frontline Professional Solutions</h3>
+        <p>Logistics, staffing, product sourcing, and consulting for government and commercial clients.</p>
+      </div>
+      <div>
+        <h3>Navigate</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></li>
+          <li>[Phone Number]</li>
+          <li>[City, State]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>&copy; 2026 Frontline Professional Solutions. All rights reserved.</span>
+        <span>UEI: [UEI Number] &middot; CAGE: [CAGE Code]</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
