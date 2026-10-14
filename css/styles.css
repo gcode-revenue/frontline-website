@@ -550,6 +550,25 @@ p { margin: 0 0 1em; }
   text-align: right;
 }
 
+.naics-list dt {
+  flex: 0 0 80px;
+}
+
+.naics-list dd {
+  flex: 1;
+  text-align: left;
+}
+
+.naics-tag {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
 /* ---------- Services page ---------- */
 
 .service {

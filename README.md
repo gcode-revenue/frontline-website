@@ -9,4 +9,4 @@ Static website for Frontline Professional Solutions (plain HTML/CSS, no build st
 - `images/logo-mark.svg` – Logo mark (SVG recreation; replace with the original artwork file when available)
 - `CNAME` – Custom domain for GitHub Pages
 
-Before launch, replace the bracketed placeholders (`[UEI Number]`, `[CAGE Code]`, `[Phone Number]`, `[e.g., Small Business]`, address). The site is served at www.frontlineps-usa.com (see `CNAME`).
+The site is served at www.frontlineps-usa.com (see `CNAME`).
