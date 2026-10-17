@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Bid Finder · APD Bid &amp; Project Hub</title>
+<link rel="icon" type="image/png" href="apd-logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F6F9}
+a{color:#14305F}a:hover{color:#16478D}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;color:#3C4654;text-decoration:none;font-size:14px;font-weight:500;min-height:44px;box-sizing:border-box}
+.nav:hover{background:#EEF3FA;color:#16478D}
+.nav.on{background:#E3ECF8;color:#16478D;font-weight:600}
+.nav.on svg{color:#16478D}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 14px;border-radius:8px;font-weight:600;font-size:13px;text-decoration:none;box-sizing:border-box;cursor:pointer;font-family:inherit;white-space:nowrap}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.tr{display:grid;grid-template-columns:2.2fr 1.2fr 1.1fr 80px 90px 130px 200px;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #EBEFF4;font-size:14px}
+.tn{display:grid;grid-template-columns:1.6fr 1.4fr 110px 110px 1.4fr;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #EBEFF4;font-size:14px}
+.tw{min-width:1100px}.tnw{min-width:820px}
+.src{font-size:13px;font-weight:600;color:#16478D;text-decoration:underline}
+@media (max-width: 760px){.tw,.tnw{min-width:0}.tr,.tn{grid-template-columns:1fr 1fr;row-gap:8px}.tr>span:first-child,.tr>span:last-child,.tn>strong{grid-column:1 / -1}.th{display:none}}
+</style>
+
+<script src="morphdom-umd.min.js"></script>
+<script src="dc-lite.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl-main">
+<div style="display: flex; flex-wrap: wrap; min-height: 100vh; font-family: 'Lexend', system-ui, sans-serif; color: #14213A; background: #F4F6F9">
+
+<nav aria-label="Main" style="flex: 1 1 220px; max-width: 100%; background: #FFFFFF; color: #3C4654; border-right: 1px solid #E1E6ED; padding: 24px 16px; display: flex; flex-direction: column; gap: 28px; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 0 8px">
+<img src="apd-logo.png" alt="APD Construction" style="width: 156px; height: auto">
+<span style="font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #566170">Bid &amp; Project Hub</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>Dashboard</a>
+<a class="nav on" href="bid-finder.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>Bid Finder</a>
+<a class="nav" href="proposals.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path></svg>Proposals</a>
+<a class="nav" href="follow-ups.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span style="flex: 1">Follow-ups</span><span style="background: #16478D; color: #FFFFFF; font-size: 12px; font-weight: 700; border-radius: 10px; padding: 2px 8px">9</span></a>
+<a class="nav" href="bid-intel.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>Bid Intel</a>
+<a class="nav" href="projects.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"></path><path d="M5 4h11l-2 4 2 4H5"></path></svg>Projects</a>
+<a class="nav" href="settings.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"></path></svg>Data &amp; email</a>
+</div>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 12px; padding: 12px 8px; border-top: 1px solid #E1E6ED">
+<div style="width: 36px; height: 36px; border-radius: 18px; background: #16478D; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700">AP</div>
+<div style="display: flex; flex-direction: column"><span style="color: #14213A; font-size: 14px; font-weight: 600">Ariel Padilla</span><span style="font-size: 12px; color: #566170">President</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 32px 32px 112px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+<header style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap"><span style="font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #566170">More bids in · the first lever toward $12M</span><span style="font-size: 12px; font-weight: 600; color: #8A5A00; background: #FBF0D9; padding: 3px 8px; border-radius: 6px">Sample data</span></div>
+<h1 style="margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.5px">Bid Finder</h1>
+<span style="font-size: 14px; color: #566170">Owned by the dedicated bid estimator · [Name] · submits bids and tracks every status</span>
+</header>
+
+<section aria-label="This week" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #566170; font-weight: 600">New invitations this week</span><span class="mono" style="font-size: 30px; font-weight: 600">23</span><span style="font-size: 13px; color: #566170">From 4 sources</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #566170; font-weight: 600">In APD’s scope</span><span class="mono" style="font-size: 30px; font-weight: 600">11</span><span style="font-size: 13px; color: #566170">Trade, area and size match</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #566170; font-weight: 600">Bids submitted · October</span><span class="mono" style="font-size: 30px; font-weight: 600">14</span><span style="font-size: 13px; color: #566170">Pace for $12M: [27] a month</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #566170; font-weight: 600">From contractor check-ins</span><span class="mono" style="font-size: 30px; font-weight: 600">6</span><span style="font-size: 13px; color: #566170">Invites from 30-day emails</span></div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 12px; padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+<span style="flex-basis: 100%; font-size: 13px; color: #2F6B3A; font-weight: 600">✓ Synced with the bids inbox (bids@[company].com) · checked 2 min ago · every invitation email becomes a row below, linked to its listing</span>
+<span style="font-size: 13px; font-weight: 700; margin-right: 6px">Sources</span>
+<span style="font-size: 13px; font-weight: 600; color: #14305F; background: #E3ECF8; padding: 6px 12px; border-radius: 14px">✓ PlanHub</span>
+<span style="font-size: 13px; font-weight: 600; color: #14305F; background: #E3ECF8; padding: 6px 12px; border-radius: 14px">✓ BuildingConnected</span>
+<span style="font-size: 13px; font-weight: 600; color: #14305F; background: #E3ECF8; padding: 6px 12px; border-radius: 14px">✓ Orange County · City of Orlando · GOAA portals</span>
+<span style="font-size: 13px; font-weight: 600; color: #14305F; background: #E3ECF8; padding: 6px 12px; border-radius: 14px">✓ bids@ inbox</span>
+<span style="font-size: 13px; font-weight: 600; color: #14305F; background: #E3ECF8; padding: 6px 12px; border-radius: 14px">✓ Contractor relationships</span>
+<span style="font-size: 13px; color: #566170; margin-left: auto">Scope: roofing, plumbing, GC · Orange, Osceola, Seminole, Lake · $25K–$3M</span>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 12px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 18px 16px 12px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 700">New opportunities in scope</h2>
+<span style="font-size: 13px; color: #566170">{{decidedLabel}}</span>
+</div>
+<div style="overflow-x: auto">
+<div class="tw">
+<div class="tr th" style="font-size: 12px; font-weight: 700; color: #566170; text-transform: uppercase; letter-spacing: 0.6px; background: #F7F9FC"><span>Project</span><span>Source</span><span>Trade</span><span>Bid due</span><span>Est. size</span><span>Fit</span><span>Decision</span></div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<div class="tr">
+<span style="display: flex; flex-direction: column; gap: 2px"><a href="{{r.url}}" target="_blank" rel="noopener" style="font-weight: 700; color: #14305F">{{r.project}} ↗</a><span style="font-size: 13px; color: #566170">{{r.who}}</span></span>
+<span style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 13px">{{r.source}}</span><span style="font-size: 12px; color: #566170">{{r.via}}</span><a class="src" href="{{r.url}}" target="_blank" rel="noopener">{{r.open}} ↗</a></span>
+<span style="font-size: 13px">{{r.trade}}</span>
+<span style="font-size: 13px">{{r.due}}</span>
+<span class="mono">{{r.size}}</span>
+<span><span style="{{r.fitStyle}}">{{r.fit}}</span></span>
+<span style="display: flex; gap: 8px">
+<sc-if value="{{r.open}}" hint-placeholder-val="{{true}}">
+<button type="button" class="btn" onClick="{{r.pursue}}" style="background: #16478D; color: #FFFFFF; border: 0">Pursue</button>
+<button type="button" class="btn" onClick="{{r.pass}}" style="background: #FFFFFF; color: #14213A; border: 1px solid #CFD6DF">Pass</button>
+</sc-if>
+<sc-if value="{{r.pursued}}" hint-placeholder-val="{{false}}">
+<a class="btn" href="proposal.html" style="background: #E4F1E6; color: #2F6B3A">✓ Proposal started</a>
+</sc-if>
+<sc-if value="{{r.passed}}" hint-placeholder-val="{{false}}">
+<span style="font-size: 13px; color: #566170">Passed · logged</span>
+</sc-if>
+</span>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 12px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 18px 16px 12px; align-items: baseline">
+<div style="display: flex; flex-direction: column; gap: 4px"><h2 style="margin: 0; font-size: 18px; font-weight: 700">Contractor network · every 30 days</h2><span style="font-size: 13px; color: #566170">Automatic “Anything we can price for you?” to every contractor APD has worked with</span></div>
+<a href="follow-ups.html" style="font-size: 14px; font-weight: 600">41 contractors on the list →</a>
+</div>
+<div style="overflow-x: auto">
+<div class="tnw">
+<div class="tn th" style="font-size: 12px; font-weight: 700; color: #566170; text-transform: uppercase; letter-spacing: 0.6px; background: #F7F9FC"><span>Contractor</span><span>Last work together</span><span>Last email</span><span>Next email</span><span>Result</span></div>
+<div class="tn"><strong>[GC partner A]</strong><span style="font-size: 13px">Plumbing sub · office build-out</span><span style="font-size: 13px">Sep 18</span><span style="font-size: 13px">Oct 18</span><span style="font-size: 13px; color: #2F6B3A; font-weight: 600">✓ Sent 2 invitations to bid</span></div>
+<div class="tn"><strong>[GC partner B]</strong><span style="font-size: 13px">Roofing sub · retail center</span><span style="font-size: 13px">Sep 22</span><span style="font-size: 13px">Oct 22</span><span style="font-size: 13px; color: #566170">No reply yet</span></div>
+<div class="tn"><strong>[Property manager C]</strong><span style="font-size: 13px">Restroom remodel · 2025</span><span style="font-size: 13px">Sep 25</span><span style="font-size: 13px">Oct 25</span><span style="font-size: 13px; color: #2F6B3A; font-weight: 600">✓ Asked for a re-roof price</span></div>
+<div class="tn"><strong>[Competitor A] Roofing</strong><span style="font-size: 13px">Won a bid against APD · Oct 14</span><span style="font-size: 13px">Oct 15</span><span style="font-size: 13px">Nov 14</span><span style="font-size: 13px; color: #566170">Winner intro sent · plumbing offered</span></div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="NewProposal" start-open="no" hint-size="0px,0px"></dc-import>
+</div>
+</template>
+<template id="tpl-np">
+<div style="font-family: 'Lexend', system-ui, sans-serif; color: #14213A">
+
+<sc-if value="{{showTab}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{openIt}}" style="position: fixed; right: 24px; bottom: 24px; z-index: 50; display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 0 22px; border: 0; border-radius: 28px; background: #16478D; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 24px rgba(27, 30, 34, 0.28)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>New proposal / customer</button>
+</sc-if>
+
+<sc-if value="{{showPanel}}" hint-placeholder-val="{{false}}">
+<section role="dialog" aria-label="New proposal or customer" style="position: fixed; right: 24px; bottom: 24px; z-index: 50; width: 480px; max-width: calc(100vw - 32px); max-height: calc(100vh - 48px); overflow-y: auto; background: #FFFFFF; border: 1px solid #E1E6ED; border-radius: 14px; box-shadow: 0 16px 48px rgba(27, 30, 34, 0.3); display: flex; flex-direction: column; box-sizing: border-box">
+
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 20px 12px">
+<div style="display: flex; flex-direction: column; gap: 2px"><h2 style="margin: 0; font-size: 19px; font-weight: 700">New proposal</h2><span style="font-size: 13px; color: #566170">Creates the customer, contact and proposal in one step</span></div>
+<button type="button" onClick="{{closeIt}}" aria-label="Close" style="width: 44px; height: 44px; border: 0; border-radius: 8px; background: #F4F6F9; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #14213A"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+
+<sc-if value="{{saved}}" hint-placeholder-val="{{false}}">
+<div style="padding: 8px 20px 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="background: #E4F1E6; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
+<strong style="font-size: 16px; color: #2F6B3A">✓ Proposal logged · P-26-122</strong>
+<span style="font-size: 14px; line-height: 1.5">Customer and contact saved. Follow-ups (<strong>{{seqName}}</strong>) go out automatically from the assigned rep’s email, and permit watch starts at the project address.</span>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<button type="button" onClick="{{another}}" style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #CFD6DF; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Log another</button>
+<a href="proposal.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 8px; background: #14213A; color: #FFFFFF; font-size: 14px; font-weight: 600; text-decoration: none">Open proposal</a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{editing}}" hint-placeholder-val="{{true}}">
+<div role="tablist" aria-label="Sections" style="display: flex; gap: 4px; padding: 0 20px; border-bottom: 1px solid #EBEFF4">
+<button type="button" role="tab" aria-selected="{{detailsSel}}" onClick="{{showDetails}}" style="{{detailsTabStyle}}">Customer &amp; proposal</button>
+<button type="button" role="tab" aria-selected="{{logSel}}" onClick="{{showLog}}" style="{{logTabStyle}}">Communications ({{logCount}})</button>
+</div>
+
+<sc-if value="{{isDetails}}" hint-placeholder-val="{{true}}">
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #566170">Customer</h3>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Customer / company *<input type="text" placeholder="Search existing or add new" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Point of contact *<input type="text" placeholder="Full name" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Title / role<input type="text" placeholder="e.g. Facilities Director" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Phone *<input type="tel" placeholder="(407) 555-0100" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Email *<input type="email" placeholder="name@company.com" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #566170">Proposal</h3>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 600">Proposal type *</span>
+<div role="group" aria-label="Proposal type" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<sc-for list="{{types}}" as="t" hint-placeholder-count="3">
+<button type="button" onClick="{{t.pick}}" aria-pressed="{{t.pressed}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Project name *<input type="text" placeholder="e.g. Fleet maintenance bldg re-roof" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Project address *<input type="text" placeholder="Street, city — used for permit watch" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Municipality<select style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"><option>City of Orlando</option><option>Orange County</option><option>Osceola County / Kissimmee</option><option>Seminole County</option><option>Winter Park</option><option>Other</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Lead source<select style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"><option>PlanHub</option><option>BuildingConnected</option><option>Public portal</option><option>Contractor relationship</option><option>Referral</option><option>Direct / website</option></select></label>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Trade<select style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"><option>Roofing — commercial</option><option>Roofing — residential</option><option>Commercial plumbing</option><option>New construction</option><option>Renovation</option><option>Public works</option><option>Pre-engineered metal building</option><option>Painting</option><option>Custom home</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Bid value *<input type="text" inputmode="decimal" placeholder="$0" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Date submitted *<input type="date" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Assigned rep *<select style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"><option>[Estimator 1]</option><option>[Estimator 2]</option><option>[Sales rep]</option></select></label>
+</div>
+<sc-if value="{{isGov}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Solicitation / bid no.<input type="text" placeholder="e.g. ITB-26-0412" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">M/WBE certification used<select style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"><option>Orange County M/WBE</option><option>City of Orlando M/WBE</option><option>GOAA</option><option>None required</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Award date (expected)<input type="date" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"></label>
+</div>
+</sc-if>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Proposal file (PDF)<input type="file" accept="application/pdf" style="font: inherit; font-weight: 400; font-size: 13px; min-height: 44px; padding: 10px 12px; border: 1px dashed #AEB7C2; border-radius: 8px; box-sizing: border-box; width: 100%; background: #F7F9FC"></label>
+<div style="background: #E3EAF3; border-radius: 8px; padding: 12px 14px; font-size: 13px; line-height: 1.5; color: #14213A">Follow-up sequence: <strong>{{seqName}}</strong> — starts automatically when saved.</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isLog}}" hint-placeholder-val="{{false}}">
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<div style="background: #F7F9FC; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #566170; font-weight: 600">Email opens</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600">0</span></div>
+<div style="background: #F7F9FC; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #566170; font-weight: 600">Proposal views</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600">0</span></div>
+<div style="background: #F7F9FC; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #566170; font-weight: 600">Replies</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 600">0</span></div>
+</div>
+<span style="font-size: 13px; color: #566170; line-height: 1.5">Emails to and from this contact are logged automatically from the company mailbox. Add calls, meetings and site visits by hand.</span>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{log}}" as="e" hint-placeholder-count="1">
+<li style="border: 1px solid #EBEFF4; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap"><span style="font-size: 12px; font-weight: 700; color: #14305F; background: #E3EAF3; padding: 3px 8px; border-radius: 10px">{{e.kind}}</span><span style="font-size: 12px; color: #566170">{{e.date}}</span><span style="font-size: 12px; color: #2F6B3A; font-weight: 600">{{e.tag}}</span></div>
+<span style="font-size: 14px; line-height: 1.4">{{e.text}}</span>
+</li>
+</sc-for>
+</ol>
+<div style="border-top: 1px solid #EBEFF4; padding-top: 14px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 13px; font-weight: 700">Add communication</span>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Type<select value="{{kind}}" onChange="{{onKind}}" style="font: inherit; font-weight: 400; font-size: 14px; min-height: 44px; padding: 0 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF"><option>Call</option><option>Meeting</option><option>Site visit</option><option>Text</option><option>Email</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">Notes<textarea value="{{note}}" onChange="{{onNote}}" rows="3" placeholder="What was discussed, next step, decision date…" style="font: inherit; font-weight: 400; font-size: 14px; padding: 10px 12px; border: 1px solid #CFD6DF; border-radius: 8px; box-sizing: border-box; width: 100%; color: #14213A; background: #FFFFFF; resize: vertical"></textarea></label>
+<button type="button" onClick="{{addLog}}" style="align-self: flex-start; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #14213A; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Add to log</button>
+</div>
+</div>
+</sc-if>
+
+<div style="position: sticky; bottom: 0; display: flex; justify-content: flex-end; gap: 10px; padding: 14px 20px; background: #FFFFFF; border-top: 1px solid #EBEFF4">
+<button type="button" onClick="{{closeIt}}" style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #CFD6DF; background: #FFFFFF; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer">Cancel</button>
+<button type="button" onClick="{{save}}" style="min-height: 44px; padding: 0 20px; border-radius: 8px; border: 0; background: #16478D; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Save proposal</button>
+</div>
+</sc-if>
+</section>
+</sc-if>
+
+</div>
+</template>
+<script>
+DC.define('main', (function () { 
+class Component extends DCLogic {
+renderVals() {
+const dec = (this.state && this.state.dec) || {};
+const chip = (fg, bg) => 'font-size: 12px; font-weight: 700; color: ' + fg + '; background: ' + bg + '; padding: 4px 10px; border-radius: 12px; white-space: nowrap';
+const strong = chip('#14305F', '#E3ECF8');
+const good = chip('#566170', '#EDF0F4');
+const warn = chip('#8A5A00', '#FBF0D9');
+const all = [
+{ id: 'a', project: 'Lake Nona office build-out', who: '[GC name] · private', source: 'BuildingConnected', via: 'Invite email · Oct 15', open: 'Open in BuildingConnected', url: 'https://app.buildingconnected.com/', trade: 'Plumbing', due: 'Oct 28', size: '$180K', fit: 'Strong fit', fitStyle: strong },
+{ id: 'b', project: 'Fire station roof replacement', who: 'City of Orlando', source: 'Public portal', via: 'Portal check · Oct 16', open: 'Open on City of Orlando', url: 'https://www.orlando.gov/', trade: 'Roofing', due: 'Nov 4', size: '$420K', fit: 'Strong fit', fitStyle: strong },
+{ id: 'c', project: 'Retail shell building, Kissimmee', who: '[GC name] · private', source: 'PlanHub', via: 'Invite email · Oct 14', open: 'Open in PlanHub', url: 'https://app.planhub.com/', trade: 'Roofing · TPO', due: 'Oct 30', size: '$260K', fit: 'Good fit', fitStyle: good },
+{ id: 'd', project: 'Park restroom building (PEMB)', who: 'Orange County', source: 'Public portal', via: 'Portal check · Oct 16', open: 'Open on Orange County', url: 'https://www.ocfl.net/', trade: 'New construction', due: 'Nov 12', size: '$310K', fit: 'Strong fit', fitStyle: strong },
+{ id: 'e', project: 'Residence re-roof, Winter Park', who: 'Homeowner · referral', source: 'Contractor relationship', via: 'Reply to 30-day email', open: 'Open the email', url: 'https://outlook.office.com/', trade: 'Residential roofing', due: 'Oct 24', size: '$42K', fit: 'Good fit', fitStyle: good },
+{ id: 'f', project: 'Warehouse addition, Sanford', who: '[GC name] · private', source: 'PlanHub', via: 'Saved-search alert · Oct 13', open: 'Open in PlanHub', url: 'https://app.planhub.com/', trade: 'General construction', due: 'Nov 2', size: '$3.4M', fit: 'Above size range', fitStyle: warn }
+];
+let decided = 0;
+const rows = all.map((r) => {
+const d = dec[r.id];
+if (d) decided++;
+return Object.assign({}, r, {
+open: !d,
+pursued: d === 'pursue',
+passed: d === 'pass',
+pursue: () => this.setState({ dec: Object.assign({}, dec, { [r.id]: 'pursue' }) }),
+pass: () => this.setState({ dec: Object.assign({}, dec, { [r.id]: 'pass' }) })
+});
+});
+return { rows, decidedLabel: decided + ' of ' + all.length + ' decided · Pursue creates the proposal and starts follow-ups' };
+}
+}
+ return Component; })(), 'tpl-main');
+DC.define('NewProposal', (function () { 
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const open = st.open !== undefined ? st.open : this.props.startOpen !== 'no';
+const tab = st.tab || 'details';
+const type = st.type || 'Government';
+const saved = !!st.saved;
+const log = st.log || [{ date: 'Oct 16 · 9:12 AM', kind: 'Email', text: 'Proposal sent to the point of contact from the rep’s company mailbox.', tag: 'Auto-synced' }];
+const kind = st.kind || 'Call';
+const note = st.note || '';
+const seqs = { Government: '48 hrs · 7 days · 30 days (no-contact rules on)', Commercial: '48 hrs · 7 days · 30 days', Residential: '48 hrs · 7 days · 30 days' };
+const tabStyle = (on) => 'min-height: 44px; padding: 0 12px; border: 0; background: transparent; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: -1px; border-bottom: 3px solid ' + (on ? '#16478D' : 'transparent') + '; color: ' + (on ? '#14213A' : '#566170');
+const types = ['Residential', 'Commercial', 'Government'].map((label) => {
+const on = label === type;
+return {
+label,
+pressed: on ? 'true' : 'false',
+style: 'min-height: 44px; border-radius: 8px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; border: 1px solid ' + (on ? '#14213A' : '#CFD6DF') + '; background: ' + (on ? '#14213A' : '#FFFFFF') + '; color: ' + (on ? '#FFFFFF' : '#14213A'),
+pick: () => this.setState({ type: label })
+};
+});
+return {
+showTab: !open,
+showPanel: open,
+saved,
+editing: !saved,
+isDetails: tab === 'details',
+isLog: tab === 'log',
+detailsSel: tab === 'details' ? 'true' : 'false',
+logSel: tab === 'log' ? 'true' : 'false',
+detailsTabStyle: tabStyle(tab === 'details'),
+logTabStyle: tabStyle(tab === 'log'),
+logCount: log.length,
+types,
+isGov: type === 'Government',
+seqName: seqs[type],
+log,
+kind,
+note,
+openIt: () => this.setState({ open: true }),
+closeIt: () => this.setState({ open: false, saved: false, tab: 'details' }),
+showDetails: () => this.setState({ tab: 'details' }),
+showLog: () => this.setState({ tab: 'log' }),
+onKind: (e) => this.setState({ kind: e.target.value }),
+onNote: (e) => this.setState({ note: e.target.value }),
+addLog: () => {
+if (!note.trim()) return;
+this.setState({ log: log.concat([{ date: 'Today', kind, text: note.trim(), tag: 'Logged by rep' }]), note: '' });
+},
+save: () => this.setState({ saved: true }),
+another: () => this.setState({ saved: false, tab: 'details', log: undefined, note: '' })
+};
+}
+}
+ return Component; })(), 'tpl-np');
+DC.mount(document.getElementById('app'), 'main', {});
+</script>
+</body>
+</html>
